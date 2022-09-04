@@ -11,14 +11,20 @@
 |
 */
 
-use Illuminate\Routing\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin/stores', 'Admin\\StoreController@index');
-Route::get('/admin/stores/create', 'Admin\\StoreController@create');
-Route::post('/admin/stores/store', 'Admin\\StoreController@store');
+Route::prefix('admin')->namespace('Admin')->group(function(){
+    Route::prefix('stores')->group(function(){
+        Route::get('/', 'StoreController@index');
+        Route::get('/create', 'StoreController@create');
+        Route::post('store', 'StoreController@store');
+        Route::get('/user', 'StoreController@index');
+        Route::get('/{store}/edit', 'StoreController@edit');
+        Route::post('/update/{store}', 'StoreController@update');
+        Route::get('/destroy/{store}', 'StoreController@destroy');
 
-Route::get('/user', 'StoreController@index');
+    });  
+});

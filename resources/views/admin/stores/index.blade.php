@@ -1,42 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+@extends('layouts.app')
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
+@section('content')
+<br>
+  <h2>Exibição das Lojas</h2>
 
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-</style>
-</head>
-<body>
+<br>
+  <table class="table table-striped">
+    <tbody>  
+      @foreach ($stores as $store)
+          <tr>
+              <td>{{$store->id}}</td>
+              <td>{{$store->name}}</td>
+              <td>{{$store->description}}</td>
+              <td>{{$store->phone}}</td>
+              
+          </tr>    
+      @endforeach
+    </tbody>
+  </table>
+  </body>
+  </html>
 
-<h2>Exibição das Lojas</h2>
+  {{$stores->links()}}
 
-<table>
-  <tbody>  
-    @foreach ($stores as $store)
-        <tr>
-            <td>{{$store->id}}</td>
-            <td>{{$store->name}}</td>
-            <td>{{$store->description}}</td>
-            <td>{{$store->phone}}</td>
-            
-        </tr>    
-    @endforeach
-  </tbody>
-</table>
-</body>
-</html>
-
-{{$stores->links()}}
+@endsection
