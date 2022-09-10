@@ -18,13 +18,13 @@ Route::get('/', function () {
 
 Route::prefix('admin')->namespace('Admin')->group(function(){
     Route::prefix('stores')->group(function(){
-        Route::get('/', 'StoreController@index');
-        Route::get('/create', 'StoreController@create');
-        Route::post('store', 'StoreController@store');
-        Route::get('/user', 'StoreController@index');
-        Route::get('/{store}/edit', 'StoreController@edit');
-        Route::post('/update/{store}', 'StoreController@update');
-        Route::get('/destroy/{store}', 'StoreController@destroy');
+        Route::get('/', 'StoreController@index')->name('index');
+        Route::get('/create', 'StoreController@create')->name('create');
+        Route::post('store', 'StoreController@store')->name('store');
+        Route::get('/user', 'StoreController@index')->name('admin.stores.index');
+        Route::get('/{store}/edit', 'StoreController@edit')->name('admin.stores.edit');
+        Route::post('/update/{store}', 'StoreController@update')->name('admin.stores.update');
+        Route::get('/destroy/{store}', 'StoreController@destroy')->name('admin.stores.destroy');
 
     });  
 });

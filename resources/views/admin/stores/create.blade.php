@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<br>    
+<br><br><br>
+
 <h1>Criar Loja</h1>
 <div class="form-group">
         
