@@ -24,7 +24,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = $this->product->paginate(10);
+        $product = $this->product->paginate(10);
         return view('admin.products.index',compact('products'));
     }
 
@@ -35,7 +35,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $stores = \App\Store::all(['id','name']);
+        $stores = Store::all(['id','name']);
         return view('admin.products.create',compact('stores'));
     }
 
@@ -47,7 +47,12 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $store = \App\Store::find($data['store']);
+        $store->products()->create($data);
+
+        flash('Produto Criado com Sucesso!')->success();
+        return redirect()->route('admin.products.index');
     }
 
     /**
@@ -69,7 +74,7 @@ class ProductController extends Controller
      */
     public function edit($product)
     {
-        $product = $this->product->find($product);
+        $product = $this->product->findOrFail($product);
         return view('admin.products.edit',compact('product'));
     }
 
@@ -82,7 +87,12 @@ class ProductController extends Controller
      */
     public function update(Request $request, $product)
     {
-        //
+        $data = $request->all();
+        $product = $this->product->find($product);
+        $product->update($data);
+
+        flash('Produto Atualizado com Sucesso!')->success();
+        return redirect()->route('admin.products.index');
     }
 
     /**
@@ -93,6 +103,6 @@ class ProductController extends Controller
      */
     public function destroy($product)
     {
-        //
+        return $product;
     }
 }

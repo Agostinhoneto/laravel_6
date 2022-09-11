@@ -6,11 +6,11 @@
 <h1>Criar Produtos</h1>
 <div class="form-group">
         
-    <form action="/admin/products/store" method="post">
+    <form action="/admin/products/product/store" method="post">
         <input type="hidden" name="_token" value="{{csrf_token()}}">
         
         <div class="form-group">
-            <label>Nome Loja:</label>
+            <label>Nome Produto:</label>
             <input type="text" name="name" class="form-control" />
         </div>
 
@@ -18,26 +18,28 @@
             <label>Descrição:</label>
             <input type="text" name="description" class="form-control"  />
         </div>
-        
+       
         <div class="form-group">
-            <label>Telefone:</label>
-            <input type="text" name="phone"  class="form-control" />
+            <label>Conteudo:</label>
+            <textarea name="body" cols="30" rows="10" class="form-control"></textarea>
         </div>
 
         <div class="form-group">
-            <label>Celular:</label>
-            <input type="text" name="mobile_phone" class="form-control"  />
+            <label>Preço:</label>
+            <input type="text" name="price" class="form-control"  />
         </div>
-
         <div class="form-group">
             <label>slug:</label>
             <input type="text" name="slug" class="form-control"  />
         </div>
 
-        <div class="form-group">
-            <label>Usuário:</label>
-            <select name="user" class="form-control">
 
+        <div class="form-group">
+            <label>Lojas:</label>
+            <select name="store_id" class="form-control">
+                @foreach ($stores as $store )
+                    <option value="{{$store->id}}">{{$store->name}}</option> 
+                @endforeach
             </select>
         </div>
         <br>

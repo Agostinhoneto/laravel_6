@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<br>
-  <h2>Exibição das Lojas</h2>
+<br><br><br>
+  <h2>Exibição das Produtos</h2>
 
 <br>
   <table class="table table-striped">
@@ -10,24 +10,26 @@
         <thead>
             <th>Id</th>
             <th>Nome</th>
+            <th>Conteudo</th>
             <th>Preço</th>
             <th>Ações</th>
         </thead> 
-
       @foreach ($products as $p)
-          <tr>
-              <td>{{$p->id}}</td>
-              <td>{{$p->name}}</td>
-              <td>
-                <a href="{{route('admin.products.edit',['product' => $p->id])}}" class="btn btn-sm btn-default">Editar</a>
-                <a href="{{route('admin.products.destroy',['product' => $p->id])}}" class="btn btn-sm btn-danger">Remover</a>
+        <tr>
+            <td>{{$p->id}}</td>
+            <td>{{$p->name}}</td>
+            <td>{{$p->body}}</td>
+            <td>{{$p->price}}</td>
+            <td>
+              <a href="{{route('admin.products.edit',['product' => $p->id])}}" class="btn btn-sm btn-default">Editar</a>
+              <a href="{{route('admin.products.destroy',['product' => $p->id])}}" class="btn btn-sm btn-danger">Remover</a>
 
-              </td>
-          </tr>    
+            </td>
+        </tr>    
       @endforeach
     </tbody>
   </table>
-  <a href="{{route('create')}}" class="btn btn-sm btn-success">Criar Produtos</a>
+  <a href="{{route('product-create')}}" class="btn btn-sm btn-success">Criar Produtos</a>
 
   {{$products->links()}}
 
