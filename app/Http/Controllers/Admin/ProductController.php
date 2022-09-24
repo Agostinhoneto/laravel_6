@@ -24,8 +24,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product = $this->product->paginate(10);
-        return view('admin.products.index',compact('products'));
+       //dd('OI');
+       $product = \App\Product::paginate(10);
+       return view ('admin.products.index', compact('product'));
+    
     }
 
     /**
@@ -35,7 +37,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $stores = Store::all(['id','name']);
+        $stores = \App\Store::all(['id','name']); 
+        
         return view('admin.products.create',compact('stores'));
     }
 
@@ -48,11 +51,19 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $store = \App\Store::find($data['store']);
-        $store->products()->create($data);
-
-        flash('Produto Criado com Sucesso!')->success();
-        return redirect()->route('admin.products.index');
+        
+        $verificaExisteProduto = \App\Product::where('name',$data['name'])->where('stores_id',$data['stores_id'])->exists();
+        if($verificaExisteProduto ){
+            return redirect()->route('index');
+        }
+        //dd($data);
+         $stores = \App\Product::create($data);
+        if(!$stores){
+            return redirect()->route('index');
+        }
+        
+        flash('Cadastro de Produto com Sucesso')->success();
+        return redirect()->route('index');
     }
 
     /**

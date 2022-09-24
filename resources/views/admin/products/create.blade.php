@@ -36,7 +36,7 @@
 
         <div class="form-group">
             <label>Lojas:</label>
-            <select name="store_id" class="form-control">
+            <select name="stores_id" class="form-control">
                 @foreach ($stores as $store )
                     <option value="{{$store->id}}">{{$store->name}}</option> 
                 @endforeach

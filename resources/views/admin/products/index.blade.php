@@ -14,7 +14,7 @@
             <th>Preço</th>
             <th>Ações</th>
         </thead> 
-      @foreach ($products as $p)
+      @foreach ($product as $p)
         <tr>
             <td>{{$p->id}}</td>
             <td>{{$p->name}}</td>
@@ -31,6 +31,6 @@
   </table>
   <a href="{{route('product-create')}}" class="btn btn-sm btn-success">Criar Produtos</a>
 
-  {{$products->links()}}
+  {{$product->links()}}
 
 @endsection

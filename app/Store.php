@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Store extends Model
 {
-    protected $fillable = ['name','description','phone','mobile_phone','slug'];
+    protected $fillable = ['name','description','phone','mobile_phone','slug','stores_id'];
    
     public function user(){
         return $this->belongsTo(User::class,'users_id');
