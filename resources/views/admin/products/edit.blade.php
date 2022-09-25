@@ -20,7 +20,7 @@
         
         <div class="form-group">
             <label>Conteudo:</label>
-            <textarea name="body" cols="30" rows="10" class="form-control" value="{{$product->body}}"></textarea>
+            <textarea name="body" cols="30" rows="10" class="form-control">{{$product->body}}</textarea>
 
         </div>
 

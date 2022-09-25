@@ -103,7 +103,7 @@ class ProductController extends Controller
         $product->update($data);
 
         flash('Produto Atualizado com Sucesso!')->success();
-        return redirect()->route('admin.products.index');
+        return redirect()->route('index');
     }
 
     /**
@@ -114,6 +114,11 @@ class ProductController extends Controller
      */
     public function destroy($product)
     {
-        return $product;
+        $excluir = \App\Product::find($product);
+        $excluir->delete();
+        
+        flash('Produto Excluido com Sucesso')->success();
+        return redirect()->route('index');
+        //return $product;
     }
 }
