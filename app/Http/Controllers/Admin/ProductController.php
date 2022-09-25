@@ -63,7 +63,7 @@ class ProductController extends Controller
         }
         
         flash('Cadastro de Produto com Sucesso')->success();
-        return redirect()->route('index');
+        return redirect()->route('index-product');
     }
 
     /**
@@ -103,7 +103,7 @@ class ProductController extends Controller
         $product->update($data);
 
         flash('Produto Atualizado com Sucesso!')->success();
-        return redirect()->route('index');
+        return redirect()->route('index-product');
     }
 
     /**
@@ -118,7 +118,7 @@ class ProductController extends Controller
         $excluir->delete();
         
         flash('Produto Excluido com Sucesso')->success();
-        return redirect()->route('index');
+        return redirect()->route('index-product');
         //return $product;
     }
 }
