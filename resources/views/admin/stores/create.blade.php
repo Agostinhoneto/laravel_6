@@ -20,7 +20,7 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown
+                Opções
                 </a>
                 <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#">Action</a></li>
@@ -40,6 +40,7 @@
         </div>
     </div>
   </nav>
+  <br>
   <h1>Criar Loja</h1>
 <div class="form-group">        
     <form action="/admin/stores/store" method="post">
@@ -47,8 +48,13 @@
         
         <div class="form-group">
             <label>Nome Loja:</label>
-            <input type="text" name="name" class="form-control" />
+            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror">
         </div>
+        @error('name')
+            <div class="invalid-feedback">
+                {{$message}}
+            </div>
+        @enderror
 
         <div class="form-group">
             <label>Descrição:</label>

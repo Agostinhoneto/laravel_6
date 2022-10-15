@@ -39,6 +39,7 @@
       </div>
   </div>
 </nav>
+<br>
   <table class="table table-striped">
     <tbody> 
         <thead>
@@ -64,7 +65,15 @@
       @endforeach
     </tbody>
   </table>
-  <a href="{{route('create')}}" class="btn btn-sm btn-success">Criar Loja</a>
+  <br>
+  <div class="col-auto">
+    <button type="submit" class="btn btn-primary mb-3">
+        <a href="{{route('create')}}" class="btn btn-sm btn-success">Confirm identity</a>
+    
+    </button>
+  </div>
+Criar Loja</a>
+  <br><br>
 
   {{$stores->links()}}
 
